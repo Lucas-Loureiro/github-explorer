@@ -21,9 +21,9 @@ function List() {
     console.log(repositories)
   }, [repositories])
 
-  async function handleAddRepository() {
+  async function handleAddRepository(e) {
     // eslint-disable-next-line no-restricted-globals
-    event.preventDefault();
+    e.preventDefault();
 
     try {
       const response = await api.get(`/repos/${newRepo}`);
@@ -43,7 +43,7 @@ function List() {
       <Icon src="https://image.flaticon.com/icons/png/512/25/25231.png" />
         <Title>Github Explorer</Title>
       </TitleContainer>
-      <form onSubmit={handleAddRepository}>
+      <form onSubmit={e => handleAddRepository(e)}>
         <Input placeholder="Digite o nome do repositório.." 
           onChange={e => setNewRepo(e.target.value) } />
       </form>
